@@ -1,0 +1,17 @@
+class Solution:
+    def longestCommonPrefix(self,a):
+            length=len(a)  
+            a.sort()  
+            if (length==0): 
+                return "" 
+            if (length==1): 
+                return a[0] 
+            smallest=min(len(a[0]),len(a[length-1]))
+            i = 0
+            while i <smallest and a[0][i]==a[length-1][i]:
+                i+=1
+            ans=a[0][0:i] 
+            return ans
+a=Solution()
+b=a.longestCommonPrefix(['hello','hellb','hella'])
+print(b)
