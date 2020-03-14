@@ -1,0 +1,15 @@
+class Triangle:
+    def __init__(self,a,b,c):
+        self.a=a
+        self.b=b
+        self.c=c
+    def test(self):
+        if ((self.a + self.b + self.c==180)and self.a!= 0 and self.b != 0 and self.c != 0): 
+            return True
+        else: 
+            return False
+f=int(input("enter 1st angle"))
+t=int(input("enter 2nd angle"))
+th=int(input("enter 3rd angle"))
+a=Triangle(f,t,th)
+print(a.test())
