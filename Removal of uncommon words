@@ -1,0 +1,7 @@
+def c(first,second):
+    first= set(first.split())
+    second= set(second.split())
+    return first.union(second)-first.intersection(second)
+first=input("enter 1 ")
+second=input("enter 2 ")
+print(c(first,second))
