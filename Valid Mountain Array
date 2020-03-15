@@ -1,0 +1,21 @@
+class Solution:
+    def validMountainArray(self, a: List[int]) -> bool:
+        if a==[]:
+            return False
+        maxi=max(a)
+        ind=a.index(maxi)
+        b=a[0:ind+1]
+        b=list(set(b))
+        b.sort()
+        if b==a[0:ind+1] and b!=[maxi]:
+            ans=True
+        b=a[ind+1:]
+        b=list(set(b))
+        b.sort(reverse=True)
+        if b==a[ind+1:] and b!=[] and max(b)!=maxi:
+            ans2=True
+        try:
+            if ans==ans2:
+                return True
+        except:
+            return False
