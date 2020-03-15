@@ -1,0 +1,9 @@
+class Solution:
+    def lengthOfLastWord(self, s):
+        s=s.split()
+        try:
+            return len(s[-1])
+        except:
+            return 0
+a=Solution()
+print(a.lengthOfLastWord(''))
