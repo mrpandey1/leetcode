@@ -1,4 +1,4 @@
-class Solution:
+class Solutions:
     def getRow(self, n: int) -> List[int]:
         a=[]
         if n==0:
