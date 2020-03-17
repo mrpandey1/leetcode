@@ -1,0 +1,8 @@
+from collections import Counter
+class Solution:
+    def majorityElement(self, nums):
+        a=Counter(nums)
+        for i in nums:
+            if a[i]>len(nums)//2:
+                return i
+        return []
