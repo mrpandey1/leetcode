@@ -1,0 +1,4 @@
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        for i in range(1,k+1):
+            nums[0:-1],nums[-1:]=nums[-1:],nums[0:-1]
