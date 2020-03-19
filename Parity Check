@@ -1,4 +1,11 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Mar 19 11:13:28 2020
+
+@author: Baraka
+"""
 from numpy.random import choice
+from random import randrange
 def one_s(a):
     one=0
     for i in a:
@@ -30,8 +37,10 @@ import random
 def received():
     data=transmission()
     received=[]
-    for i in range(len(data)):
-        received.append(random.choice([1,0,0,1,1,1,0,0,0]))
+    for i in data:
+        received.append(i)
+    for i in range(randrange(1,len(data))):
+        received[randrange(len(data)-1)]=random.choice([1,0,0,0,1,1])
     print("Data send {}".format(data))
     print("Data received {}".format(received))
     if len(received)!=len(data):
