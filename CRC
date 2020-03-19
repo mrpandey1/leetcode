@@ -1,0 +1,60 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Mar 19 13:28:05 2020
+
+@author: Nishant
+"""
+def get():
+    divident='101010'
+    divisor='101'
+    return divident,divisor
+def modify(divident,divisor,val):
+    divident="{}{}".format(divident,val)
+    return divident,divisor
+def crc(divident,divisor):
+    divident,divisor=modify(divident,divisor,'0'*(len(divisor)-1))
+    val = len(divisor) 
+    tmp = divident[0:val]
+    def xor(a, b): 
+        ans=[] 
+        for i in range(1, len(b)): 
+            if a[i] == b[i]: 
+                ans.append('0') 
+            else: 
+                ans.append('1') 
+        return ''.join(ans) 
+    while val < len(divident): 
+        if tmp[0] == '1': 
+            tmp = xor(divisor, tmp) + divident[val] 
+        else: 
+            tmp = xor('0'*val, tmp) + divident[val] 
+        val += 1
+    if tmp[0] == '1': 
+        tmp = xor(divisor, tmp) 
+    else: 
+        tmp= xor('0'*val, tmp) 
+        checkword = tmp
+    return checkword
+def receivers_end():
+    divident,divisor=get()
+    try:
+        checkword=crc(divident,divisor)
+        print(checkword)
+        divident,divisor=modify(divident,divisor,str(checkword))
+        checkword=crc(divident,divisor)
+        if checkword=='000':
+            print("success")
+        else:
+            print('Transmission failed')
+    except:
+        print('Transmission failed')
+receivers_end()
+
+
+
+
+
+
+
+
+
