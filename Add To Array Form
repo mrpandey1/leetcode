@@ -1,0 +1,8 @@
+class Solution:
+    def addToArrayForm(self, A: List[int], K: int) -> List[int]:
+        n1=0
+        for i in range(len(A)):
+            n1=n1*10+A[i]
+        n1 = [int(x) for x in str(n1+K)]
+        return n1
+        
