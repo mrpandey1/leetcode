@@ -1,0 +1,12 @@
+class Solution:
+    def addStrings(self, num1: str, num2: str) -> str:
+        a=b=0
+        for i in num1:
+            a*=10
+            a+=ord(i)-48
+        for i in num2:
+            b*=10
+            b+=ord(i)-48
+        return str(a+b)
+a=Solution()
+print(a.addStrings("12","12"))
