@@ -1,0 +1,14 @@
+class Solution:
+    def wordPattern(self, pattern: str, str: str) -> bool:
+        str_list = str.split(" ");
+        if(len(pattern) != len(str_list)):
+            return False;
+        dic1,dic2 = {},{};
+        for pat,st in zip(pattern,str_list):
+            if(pat not in dic1):
+                dic1[pat] = st;
+            if(st not in dic2):
+                 dic2[st] = pat;
+            if(dic1[pat]!=st or dic2[st]!=pat):
+                 return False;    
+        return True;   
