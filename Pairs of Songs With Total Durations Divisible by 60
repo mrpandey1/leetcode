@@ -1,0 +1,17 @@
+class Solution:
+    def numPairsDivisibleBy60(self, time: List[int]) -> int:
+        dict = {}
+        count=0
+        for i in time:
+            if i%60 not in dict:
+                dict[i%60]=1
+            else:
+                dict[i%60]+=1
+        for a,b in dict.items():
+            if a==30 or a==0:
+                if b==1:
+                    continue
+                count+=(b*(b-1))/2
+            elif 60-a in dict:
+                count+=(b*dict[60-a])/2
+        return int(count)
