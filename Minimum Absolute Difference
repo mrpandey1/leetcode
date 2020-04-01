@@ -1,0 +1,14 @@
+class Solution:
+    def minimumAbsDifference(self, arr: List[int]) -> List[List[int]]:
+        diffs = []
+        arr.sort()
+        if len(arr)<=1:
+            return arr
+        for i in range(len(arr)-1):
+            diffs.append(abs(arr[i]-arr[i+1]))
+        short=min(diffs)
+        diffs=[]
+        for i in range(len(arr)-1):
+            if abs(arr[i]-arr[i+1])==short:
+                diffs.append([arr[i],arr[i+1]])
+        return diffs
