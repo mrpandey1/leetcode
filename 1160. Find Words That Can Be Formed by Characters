@@ -1,0 +1,7 @@
+class Solution:
+    def countCharacters(self, words: List[str], chars: str) -> int:
+        ans=0
+        for i in words:
+            if not Counter(i)-Counter(chars):
+                ans+=len(i)
+        return ans
