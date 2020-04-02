@@ -1,0 +1,15 @@
+class Solution:
+    def distributeCandies(self, candies: int, num_people: int) -> List[int]:
+        a=[0]*num_people
+        amount=1
+        curr=0
+        while candies>0:
+            if candies-amount>=0:
+                candies-=amount
+                a[curr%num_people]+=amount
+                amount+=1
+                curr+=1
+            else:
+                a[curr%num_people]+=candies
+                break
+        return a
