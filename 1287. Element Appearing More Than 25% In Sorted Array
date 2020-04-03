@@ -1,0 +1,8 @@
+class Solution:
+    def findSpecialInteger(self, arr: List[int]) -> int:
+        a=Counter(arr)
+        maxi=0
+        for i in arr:
+            if a[i]/len(arr)>=0.25:
+                maxi=max(i,maxi)
+        return maxi
