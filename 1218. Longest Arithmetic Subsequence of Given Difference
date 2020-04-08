@@ -1,0 +1,6 @@
+class Solution:
+    def longestSubsequence(self, arr: List[int], diff: int) -> int:
+        temp= dict()
+        for i, val in enumerate(arr):
+                temp[val] = temp.get(val - diff, 0) + 1
+        return max(temp.values())
