@@ -1,0 +1,16 @@
+class Solution:
+    def minRemoveToMakeValid(self, s: str) -> str:
+        st = []
+        res = [c for c in s]
+        for i in range(len(s)):
+            if s[i] == '(':
+                st.append(i)
+            elif s[i] == ')':
+                if st:
+                    st.pop()
+                else:
+                    res[i] = ' '
+        for i in range(len(st)):
+            res[st[-i]]=' '
+        return "".join(res).replace(" ", "")
+        
