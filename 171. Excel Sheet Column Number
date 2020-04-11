@@ -1,0 +1,11 @@
+class Solution:
+    def titleToNumber(self, s: str) -> int:
+        ans =0
+        if s==[]: 
+            return ans
+        i=0
+        le=len(s)
+        for i in range(le):
+            temp = ord(s[i]) - 64
+            ans += temp * 26**(le-1-i)
+        return  ans
