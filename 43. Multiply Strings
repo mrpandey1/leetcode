@@ -1,0 +1,13 @@
+class Solution:
+    def multiply(self, num1: str, num2: str) -> str:
+        Num1=0
+        temp=1
+        for i in num1[::-1]:
+            Num1+=(temp*(ord(i)-48))          
+            temp*=10
+        temp=1
+        Num2=0
+        for i in num2[::-1]:
+            Num2+=(temp*(ord(i)-48))
+            temp*=10
+        return str(Num1*Num2)
