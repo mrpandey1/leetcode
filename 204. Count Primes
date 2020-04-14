@@ -1,0 +1,12 @@
+class Solution:
+    def countPrimes(self, n: int) -> int:
+        c = 0
+        check = [0]*n
+        i=2
+        while i < n:
+                if check[i]==0:
+                    c+=1
+                    for j in range(i,n,i):
+                        check[j]=1
+                i+=1
+        return c
