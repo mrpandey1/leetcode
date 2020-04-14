@@ -1,0 +1,6 @@
+class Solution:
+    def isUgly(self, num: int) -> bool:
+        for a in 2,3,5:
+            while num%a == 0 and num >0:
+                 num /= a       
+        return num == 1
