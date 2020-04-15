@@ -1,0 +1,10 @@
+class Solution:
+    def convertToTitle(self, n: int) -> str:
+        ans = []
+        num=n
+        while n > 0:
+            n=(num-1)//26
+            r=(num-1)%26
+            num=n
+            ans.append(chr(65+ r))
+        return ''.join(ans[::-1])
