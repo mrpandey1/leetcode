@@ -1,0 +1,13 @@
+class Solution:
+    def arrayRankTransform(self, arr: List[int]) -> List[int]:
+        new = sorted(arr) 
+        d = {}
+        count = 1
+        for num in new:
+            if num not in d:
+                d[num] = count
+                count+=1
+        for i in range(len(arr)):
+            arr[i] = d[arr[i]]
+        return arr
+        
