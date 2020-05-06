@@ -1,0 +1,9 @@
+class Solution:
+    def destCity(self, paths: List[List[str]]) -> str:
+        temp = {}
+        for one, two in paths:
+            temp[one] = two
+        ans = paths[0][1]
+        while ans in temp:
+            ans = temp[ans]
+        return ans
