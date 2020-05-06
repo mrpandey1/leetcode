@@ -1,0 +1,3 @@
+select class from courses
+GROUP BY class
+HAVING COUNT(distinct student) >4
