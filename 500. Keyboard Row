@@ -1,0 +1,8 @@
+class Solution:
+    def findWords(self, words: List[str]) -> List[str]:
+        row1 = set("qwertyuiopQWERTYUIOP")
+        row2 = set("asdfghjklASDFGHJKL")
+        row3 = set("zxcvbnmZXCVBNM")
+        return [word for word in words if set(word)<=row1 or
+                                          set(word)<=row2 or
+                                          set(word)<=row3]
