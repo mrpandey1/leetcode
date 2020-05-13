@@ -1,0 +1,8 @@
+class Solution:
+    def isNumber(self, s: str) -> bool:
+        try:
+            float(s)   
+            print(float(s))
+            return True
+        except:
+            return False
