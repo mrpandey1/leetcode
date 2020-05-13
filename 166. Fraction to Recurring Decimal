@@ -1,0 +1,22 @@
+class Solution:
+    def fractionToDecimal(self, numerator: int, denominator: int) -> str:
+        neg = numerator*denominator < 0       
+        numerator, denominator = abs(numerator), abs(denominator)
+        ans, rem = divmod(numerator, denominator)
+        ans=str(ans)
+        if neg:
+            ans = '-' +ans
+        if rem==0 or numerator==0:
+            return ans
+        ans+='.'
+        cur_pos=len(ans)
+        rem_dict={}
+        while rem:
+            rem_dict[rem] = cur_pos
+            cur_res, rem = divmod(rem * 10, denominator)
+            ans += str(cur_res)
+            cur_pos += 1
+            if rem in rem_dict:
+                return ans[:rem_dict[rem]] + '(' + ans[rem_dict[rem]:] + ')'
+        return ans
+        
