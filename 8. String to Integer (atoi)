@@ -1,0 +1,16 @@
+class Solution:
+    def myAtoi(self, strs: str) -> int:
+        strs = strs.strip()
+        strs = re.findall('(^[\+\-0]*\d+)\D*', strs)
+        try:
+            ans= int(''.join(strs))
+            maxi = 2147483647
+            mini = -2147483648
+            if ans >maxi > 0:
+                return maxi
+            elif ans < mini < 0:
+                return mini
+            else:
+                return ans
+        except:
+            return 0
