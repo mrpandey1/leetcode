@@ -1,0 +1,20 @@
+class Solution:
+    def threeSumClosest(self, nums: List[int], target: int) -> int:
+        num = sorted(nums)
+        i= 0
+        result=set()
+        closest=2**31-1
+        while i < len(num) - 2:
+            j, k = i + 1, len(num) - 1
+            while j < k:
+                sumi=num[i] + num[j] + num[k]
+                if sumi == target:
+                    return sumi
+                if abs(sumi-target)<abs(closest-target):
+                    closest=sumi
+                if sumi<target:
+                    j+=1
+                else:
+                    k-=1
+            i+=1
+        return closest'
