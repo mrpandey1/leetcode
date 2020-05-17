@@ -1,0 +1,39 @@
+import statistics as st
+class Solution:
+    def merge(self,a,b):
+        i,j,k=0,0,0
+        new=[0]*(len(a)+len(b))
+        while i<len(a) and j !=len(b):
+            if a[i]<b[j]:
+                new[k]=a[i]
+                i+=1
+            else:
+                new[k]=b[j]
+                j+=1
+            k+=1
+        while i<len(a):
+            new[k]=a[i]
+            i+=1
+            k+=1
+        while j<len(b):
+            new[k]=b[j]
+            j+=1
+            k+=1
+        return new
+    def get_median(self,a,b):
+        l=self.merge(a,b)
+        d=len(l)
+        middle=int(d/2)
+        if d % 2 == 0:
+            return sum(l[middle - 1:middle + 1]) / 2
+        else :
+            return l[middle]    
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        if not nums1:
+            return self.get_median([],nums2)
+        elif not nums2:
+            return self.get_median(nums1,[])
+        #merge(nums1,nums2)
+        return float(self.get_median(nums1,nums2))
+
+        
