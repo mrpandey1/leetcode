@@ -1,0 +1,24 @@
+class Solution:
+    def findErrorNums(self, nums: List[int]) -> List[int]:
+        '''
+        temp=[i for i in range(1,len(nums)+1)]
+        s=sum(temp)
+        miss=int(s-sum(set(nums)))
+        dupl=sum(nums)-sum(set(nums))
+        return [dupl,miss]
+        '''
+        if not nums:
+            return []
+        ans=[]
+        dict={}
+        temp=[i for i in range(1,len(nums)+1)]
+        for i in nums:
+            if i in dict:
+                ans.append(i)
+            else:
+                dict[i]=1
+        for i in temp:
+            if i not in dict:
+                ans.append(i)
+                break
+        return ans
