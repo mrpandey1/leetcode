@@ -1,0 +1,15 @@
+class Solution:
+    def compress(self, chars: List[str]) -> int:
+        i = j = 0
+        while j < len(chars):
+            count, k = 1, j + 1
+            while k < len(chars) and chars[j] == chars[k]:
+                count, k = count + 1, k + 1
+            chars[i] = chars[j]
+            i += 1
+            if count > 1:
+                for c in str(count):
+                    chars[i] = c
+                    i += 1
+            j = k
+        return i
