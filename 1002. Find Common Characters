@@ -1,0 +1,8 @@
+class Solution:
+    def commonChars(self, A: List[str]) -> List[str]:
+        if not A:
+            return []
+        x = Counter(A[0])
+        for items in A[1:]:
+            x = x & Counter(items)
+        return list(x.elements())    
