@@ -1,0 +1,11 @@
+class Solution:
+    def stringMatching(self, words: List[str]) -> List[str]:
+        temp = set(words)
+        res = []
+        for i in temp:
+            temp = []
+            for j in words:
+                if i in j and i!=j:
+                    temp.append(i)
+            res.extend(set(temp))
+        return res
