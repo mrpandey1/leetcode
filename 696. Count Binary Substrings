@@ -1,0 +1,10 @@
+class Solution:
+    def countBinarySubstrings(self, s: str) -> int:
+        ans,temp,temp2=0,0,1
+        for i in range(1,len(s)):
+            if s[i-1]!=s[i]:
+                ans+=min(temp,temp2)
+                temp,temp2=temp2,1
+            else:
+                temp2+=1
+        return ans+min(temp,temp2)
