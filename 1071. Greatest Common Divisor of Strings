@@ -8,6 +8,6 @@ class Solution:
         for i in range(l2,-1,-1):
             if str2[0:i+1]*(l1//len(str2[0:i+1]))==str1:
                 gcd=str2[0:i+1]
-                if gcd*(l2//len(str2[0:i+1]))==str2:
+                if gcd*(l2//len(gcd))==str2:
                         return gcd
         return gcd
