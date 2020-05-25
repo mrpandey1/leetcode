@@ -1,0 +1,14 @@
+class Solution:
+    def findRestaurant(self, list1: List[str], list2: List[str]) -> List[str]:
+        d = {}
+        l2 = set(list2)
+        for i, val in enumerate(list1):
+            if val in l2:
+                d[val] = i
+        
+        for i, val in enumerate(list2):
+            if val in d:
+                d[val] += i
+        m = min(d.values())
+        
+        return [r for r in d if d[r] == m]
