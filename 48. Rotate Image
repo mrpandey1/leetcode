@@ -1,0 +1,10 @@
+class Solution:
+    def rotate(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        k=0
+        for j in zip(*matrix):
+            unit=[i for i in j]
+            matrix[k]=unit[::-1]
+            k+=1
