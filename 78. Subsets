@@ -1,0 +1,12 @@
+class Solution:
+    def subsets(self, S: List[int]) -> List[List[int]]:
+        if S == []:
+            return []
+        S.sort()
+        res=[[]]
+        for element in S:
+            temp=[]
+            for i in res:
+                temp.append(i+[element])
+            res+=temp
+        return res
