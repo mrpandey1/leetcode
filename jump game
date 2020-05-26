@@ -1,0 +1,9 @@
+class Solution:
+    def canJump(self, nums):
+        if not nums or len(nums) == 1:
+            return True
+        des = len(nums) - 1
+        for i in range(des - 1, -1, -1):
+            if i + nums[i] >= des:
+                des = i
+        return des==0
