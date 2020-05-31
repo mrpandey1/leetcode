@@ -1,0 +1,13 @@
+class Solution:
+    def rob(self, num: List[int]) -> int:
+        if len(num)==0:
+            return 0
+        r=[0 for i in range(len(num))]
+        for i in range(len(num)):
+            if i==0: 
+                r[0]=num[0]
+            elif i==1:
+                r[1]=max(num[0], num[1] )
+            else:
+                r[i]=max(r[i-1], r[i-2]+num[i] )
+        return r[len(num)-1]
