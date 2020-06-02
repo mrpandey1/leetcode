@@ -1,0 +1,13 @@
+class Solution:
+    def longestPalindrome(self, s):
+        counter = Counter(s)
+        sumNum = 0
+        ood = 0
+        for i in counter:
+            number = counter[i]
+            if number % 2 == 0:
+                sumNum += number
+            else:
+                sumNum += number -1
+                ood = 1
+        return sumNum + ood
