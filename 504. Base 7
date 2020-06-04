@@ -1,0 +1,19 @@
+class Solution:
+    def convertToBase7(self, num: int) -> str:
+        sign=1
+        if num<0:
+            sign=-1
+        if num==0:
+            return '0'
+        def numberToBase(n, b):
+            if n == 0:
+                return [0]
+            digits = []
+            while n:
+                digits.append(str(int(n % b)))
+                n //= b
+            return digits[::-1]
+        if sign==-1:
+            return '-'+''.join(numberToBase(abs(num),7))
+        return ''.join(numberToBase(abs(num),7))
+                
