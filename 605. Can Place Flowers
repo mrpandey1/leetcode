@@ -1,0 +1,17 @@
+class Solution:
+    def canPlaceFlowers(self, flowerbed: List[int], n: int) -> bool:
+        r = 0
+        c = 1
+        for f in flowerbed:
+            if f==1:
+                if c==2:
+                    r-=1
+                else:
+                    c = 0
+            else:
+                if c==2:
+                    c=0
+                c+=1
+                if c==2:
+                    r += 1
+        return n<=r
