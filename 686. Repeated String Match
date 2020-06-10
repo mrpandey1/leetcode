@@ -1,0 +1,8 @@
+class Solution:
+    def repeatedStringMatch(self, A: str, B: str) -> int:
+        C = ""
+        for i in range(int(len(B)/len(A)) + 3): 
+            if B in C:
+                return i
+            C += A
+        return -1
