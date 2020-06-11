@@ -1,0 +1,12 @@
+class Solution:
+    def validPalindrome(self, s: str) -> bool:
+        left = 0
+        right = len(s)-1
+        while left < right :
+            if s[left] != s[right] :
+                w1 = s[:left] + s[left+1:]
+                w2 = s[:right] + s[right+1:]
+                return w1 == w1[::-1] or w2 == w2[::-1]            
+            left += 1
+            right -= 1
+        return True
