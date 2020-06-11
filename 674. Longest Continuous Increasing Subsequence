@@ -1,0 +1,19 @@
+class Solution:
+    def findLengthOfLCIS(self, nums: List[int]) -> int:
+        ans=[]
+        ans2=[]
+        max=0
+        for i in range(len(nums)):
+            ans2.append(nums[i])
+            for j in range(i,len(nums)-1):
+                if nums[j+1]>nums[j]:
+                    ans2.append(nums[j+1])
+                else:
+                    break
+            ans.append(ans2)
+            ans2=[]
+        maxi=0
+        for i in ans:
+            if maxi<len(i):
+                maxi=len(i)
+        return maxi
