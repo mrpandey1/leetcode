@@ -1,0 +1,17 @@
+class Solution:
+    def checkValidString(self, s: str) -> bool:
+        count=0
+        temp=0
+        for i in s:
+            if i=='(':
+                count+=1
+            else:
+                count-=1
+            if i!=')':
+                temp+=1
+            else:
+                temp-=1
+            if temp<0:
+                break
+            count=max(count,0)
+        return count==0
