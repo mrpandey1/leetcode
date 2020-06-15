@@ -1,0 +1,25 @@
+class Solution:
+    def longestWord(self, words: List[str]) -> str:
+        words.sort()
+        ht = {}
+        for w in words:
+            if len(w) == 1 and w not in ht:
+                ht[w] = 1
+                continue
+            if w[:-1] in ht:
+                ht[w] = 1
+        print(ht)
+        s = sorted(ht.keys(),reverse=True,key=len)
+        print(s)
+        res = []
+        for item in s:
+            if len(res) == 0:
+                res.append(item)
+                continue
+            if len(item) < len(res[0]):
+                break
+            else:
+                res.append(item)
+        if len(res) == 0:
+            return ""
+        return res[0]
