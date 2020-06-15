@@ -1,0 +1,16 @@
+class Solution:
+    def isOneBitCharacter(self, bits: List[int]) -> bool:
+        one=[[1,0],[1,1]]
+        zero=[0]
+        i=0
+        while i<len(bits):
+            if i<=len(bits)-2:
+                temp=[bits[i],bits[i+1]]
+                print(temp,i)
+                if temp in one :
+                    i+=2
+                    continue
+            if i==len(bits)-1:
+                return True
+            i+=1
+        return False
