@@ -1,0 +1,14 @@
+class Solution:
+    def countPrimeSetBits(self, L: int, R: int) -> int:
+        def isPrime(x):
+            if x < 2:
+                return False
+            for i in range(2, x):
+                if not x%i:
+                    return False
+            return True
+        count = 0
+        for i in range(L, R+1):
+            if isPrime(bin(i)[2:].count('1')):
+                count += 1
+        return count
