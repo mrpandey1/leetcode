@@ -1,0 +1,10 @@
+from collections import Counter
+class Solution:
+    def numJewelsInStones(self, J: str, S: str) -> int:
+        a=Counter(S)
+        J=set(J)
+        ans=0
+        for i,j in a.items():
+            if i in J:
+                ans+=j
+        return ans
