@@ -1,0 +1,24 @@
+class Solution:
+    def uncommonFromSentences(self, A: str, B: str) -> List[str]:
+        dict={}
+        dict2={}
+        A=A.split()
+        B=B.split()
+        ans=[]
+        for i in A:
+            if i in dict:
+                dict[i]+=1
+            else:
+                dict[i]=1
+        for i in B:
+            if i in dict2:
+                dict2[i]+=1
+            else:
+                dict2[i]=1
+        for i , j in dict.items():
+            if i not in dict2 and j==1:
+                ans.append(i)
+        for i , j in dict2.items():
+            if i not in dict and j==1:
+                ans.append(i)
+        return ans
