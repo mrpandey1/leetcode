@@ -1,0 +1,7 @@
+class Solution:
+    def isToeplitzMatrix(self, m: List[List[int]]) -> bool:
+        for r1,r2 in zip(m, m[1:]):
+            a=r1[:-1] == r2[1:]
+            if a==False:
+                return False
+        return True
