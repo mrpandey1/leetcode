@@ -1,0 +1,15 @@
+class Solution:
+    def rotateString(self, A: str, B: str) -> bool:
+        if sorted(A)!=sorted(B):
+            return False
+        def helper(a,b):
+            i=0
+            while i<=len(a):    
+                temp1=a[0:1] 
+                temp2=a[1:]
+                a=temp2+temp1
+                if a==b:
+                    return True
+                i+=1
+            return False
+        return helper(A,B)
