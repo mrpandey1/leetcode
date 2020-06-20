@@ -1,0 +1,24 @@
+class Solution:
+    def isAlienSorted(self, words: List[str], order: str) -> bool:
+        count=0
+        dict={}
+        for i in order:
+            dict[i]=count
+            count+=1
+                
+        def comesBefore(word1, word2):
+            n1, n2 = len(word1), len(word2)
+            for i in range(min(n1,n2)):
+                if dict[word1[i]] > dict[word2[i]]:
+                    return False
+                if dict[word1[i]] < dict[word2[i]]:
+                    return True
+            if n1 > n2:
+                return False
+            else:
+                return True
+            
+        for i in range(len(words)-1):
+            if not comesBefore(words[i], words[i+1]):
+                return False
+        return True
