@@ -1,0 +1,6 @@
+class Solution:
+    def smallestRangeI(self, A: List[int], K: int) -> int:
+        minA = min(A);
+        maxA = max(A)
+        if (minA+K)>=(maxA-K): return 0
+        if (minA+K)<(maxA-K): return (maxA-K)-(minA+K)
