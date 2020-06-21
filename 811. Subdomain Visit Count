@@ -1,0 +1,13 @@
+class Solution:
+    def subdomainVisits(self, cpdomains: List[str]) -> List[str]:
+        ans=[]
+        temp2=collections.Counter()
+        for i in cpdomains:
+            c,d=i.split()
+            temp=d.split('.')
+            c=int(c)
+            for i in range(len(temp)):
+                temp2['.'.join(temp[i:])]+=c
+        return [f'{b} {a}' for a,b in temp2.items()]
+                
+        
