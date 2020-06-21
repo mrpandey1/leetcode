@@ -1,0 +1,11 @@
+class Solution:
+    def maxNumberOfBalloons(self, text: str) -> int:
+        ans=999999999
+        temp2=[]
+        temp=collections.Counter(text)
+        temp['l']=int(temp['l']/2)
+        temp['o']=int(temp['o']/2)
+        for i in 'balon':
+            ans=min(ans,temp[i])
+        return ans
+            
