@@ -1,0 +1,14 @@
+class Solution:
+    def minStartValue(self, nums: List[int]) -> int:
+        j=1
+        while True:
+            new=j
+            for i in range(len(nums)):
+                new+=nums[i]
+                if new<=0:
+                    break
+                if i==len(nums)-1:
+                    return j
+            j+=1
+            
+                    
