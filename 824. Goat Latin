@@ -1,0 +1,9 @@
+class Solution:
+    def toGoatLatin(self, S: str) -> str:
+        out = []
+        for i, w in enumerate(S.split(' ')):
+            if w[0] not in list('aeiouAEIOU'):
+                w = w[1:] + w[0]
+            out.append(w + 'ma' + 'a'*(i+1))
+        return ' '.join(out)
+        
