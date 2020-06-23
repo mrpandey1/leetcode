@@ -1,0 +1,16 @@
+class Solution:
+    def dayOfTheWeek(self, day: int, month: int, year: int) -> str:
+        week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+        dayofmonth=[31,28,31,30,31,30,31,31,30,31,30,31]
+        num = 0
+        for i in range(1971,year):
+            if i%4==0:
+                num+=366
+            else:
+                num+=365
+        if year%4==0:
+            dayofmonth[1]=29
+        for i in range(0,month-1):
+            num+=dayofmonth[i]
+        num += day - 1;
+        return week[(num + 5)%7]
