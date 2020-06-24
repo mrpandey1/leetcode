@@ -1,0 +1,16 @@
+class Solution:
+    def buddyStrings(self, A: str, B: str) -> bool:
+        if len(A)!=len(B):
+            return False
+        elif A==B:
+            return len(set(A))!=len(A)
+        temp=[]
+        for i,j in zip(A,B):
+            if i!=j:
+                temp.append((i,j))
+        if len(temp)>2:
+            return False
+        if temp[1][1]==temp[0][0] and temp[1][0]==temp[0][1]:
+            return True
+        return False
+        
