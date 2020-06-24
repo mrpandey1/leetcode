@@ -1,0 +1,13 @@
+class Solution:
+    def binaryGap(self, N: int) -> int:
+        Str = bin(N)[2:]
+        d = 0 
+        maxSF = 0
+        
+        for i in range(len(Str)):
+            if Str[i] == "1":
+                maxSF = max(maxSF,d)
+                d = 1
+            else:
+                d+= 1
+        return maxSF
