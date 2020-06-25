@@ -1,0 +1,5 @@
+class Solution:
+    def isMonotonic(self, A: List[int]) -> bool:
+        temp=sorted(A)
+        temp2=sorted(A,reverse=True)
+        return temp==A or A==temp2
