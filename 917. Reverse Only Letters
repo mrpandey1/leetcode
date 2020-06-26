@@ -1,0 +1,10 @@
+class Solution:
+    def reverseOnlyLetters(self, S: str) -> str:
+        temp=[i for i in S if i.isalpha()]
+        ans=[]
+        for i in S:
+            if i.isalpha():
+                ans.append(temp.pop())
+            else:
+                ans.append(i)
+        return ''.join(ans)
