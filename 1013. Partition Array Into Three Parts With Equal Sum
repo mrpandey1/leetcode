@@ -1,0 +1,13 @@
+class Solution:
+    def canThreePartsEqualSum(self, A: List[int]) -> bool:
+        if sum(A)%3!=0:
+            return False
+        obj=sum(A)//3
+        sumi=0
+        ans=0
+        for a in A:
+            sumi += a
+            if sumi == obj:
+                ans += 1
+                sumi = 0
+        return ans >= 3
