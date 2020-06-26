@@ -1,0 +1,44 @@
+class Solution:
+    def numRookCaptures(self, board: List[List[str]]) -> int:
+        def findrow(board):
+            for i in range(8):
+                if 'R' in board[i]:
+                    row=board[i]
+                    break
+            return row
+        def findpos(row):
+            for i in range(8):
+                if row[i] == 'R':
+                    val=i
+            return val
+        def findans(row,val):
+            ans=0
+            for i in range(val-1,0,-1):
+                if row[i]=='p':
+                    ans=1
+                    break
+                elif row[i]!='.':
+                    break
+            for i in range(val+1,8):
+                if  row[i]=='p':
+                    ans+=1
+                    break
+                elif row[i]!='.':
+                    break
+            return ans
+        def findcol(board,val):
+            count=0
+            for i in zip(*board):
+                if count==val:
+                    col=i
+                    break
+                count+=1
+            return col
+        row=findrow(board)
+        pos=findpos(row)
+        ans=findans(row,pos)
+        col=findcol(board,pos)
+        pos=findpos(col)
+        ans+=findans(col,pos)
+        return ans
+                
