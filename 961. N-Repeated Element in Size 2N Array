@@ -1,0 +1,8 @@
+class Solution:
+    def repeatedNTimes(self, A: List[int]) -> int:
+        shown={}
+        for i in A:
+            print(i,shown)
+            if i in shown:
+                return i
+            shown[i]=1
