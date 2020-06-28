@@ -1,0 +1,26 @@
+class Solution:
+    def sortedSquares(self, A: List[int]) -> List[int]:
+        temp=[]
+        for i in range(len(A)):
+            if A[i]>=0:
+                break
+        for k in range(len(A)):
+            A[k]=abs(A[k])
+        if i==0:
+            return [x*x for x in A]
+        j=i-1
+        while i<len(A) and j>=0:
+            if A[i]>A[j]:
+                temp.append(A[j]*A[j])
+                j-=1
+            elif A[i]<=A[j]:
+                temp.append(A[i]*A[i])
+                i+=1
+        while j>=0:
+            temp.append(A[j]*A[j])
+            j-=1
+        while i<len(A):
+            temp.append(A[i]*A[i])
+            i+=1
+        return temp
+            
