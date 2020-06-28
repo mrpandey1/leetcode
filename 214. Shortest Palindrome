@@ -1,0 +1,21 @@
+class Solution:
+    def shortestPalindrome(self, s: str) -> str:
+        def pallin(a):
+            return a==a[::-1]
+        if pallin(s):
+            return s
+        
+        if len(set(s))==len(s):
+            temp=s[1:]
+            temp=temp[::-1]
+            return f'{temp}{s}'
+        
+        i=0
+        pal=1
+        while i!=len(s):
+            if pallin(s[0:i+1]):
+                pal=i
+            i+=1
+        temp=s[pal+1:]
+        temp=temp[::-1]
+        return f'{temp}{s}'
