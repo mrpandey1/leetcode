@@ -1,0 +1,6 @@
+class Solution:
+    def bitwiseComplement(self, N: int) -> int:    
+        temp1=bin(N)[2:]
+        d = {'0': '1', '1': '0'}
+        return int((''.join(d[x] for x in temp1)),2)
+        
