@@ -1,0 +1,19 @@
+class Solution:
+    def findJudge(self, N: int, trust: List[List[int]]) -> int:
+        numsDoNotTrust = set()
+        trustCount = [0] * N
+
+        for i in range(1, N+1):
+            numsDoNotTrust.add(i)
+        
+        print(numsDoNotTrust)
+        for t in trust:
+            if t[0] in numsDoNotTrust:
+                numsDoNotTrust.remove(t[0])
+            trustCount[t[1]-1] += 1
+        
+        for i in numsDoNotTrust:
+            if trustCount[i-1] == N-1:
+                return i
+        
+        return -1
