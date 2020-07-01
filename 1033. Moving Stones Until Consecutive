@@ -1,0 +1,14 @@
+class Solution:
+    def numMovesStones(self, a: int, b: int, c: int) -> List[int]:
+        A = [a,b,c]
+        A.sort()
+        a,b,c = A
+        if b-a == c-b == 1:
+            return [0,0]
+        hi = c - a - 2
+        if b-a > 2 and c-b > 2:
+            lo = 2
+        else:
+            lo = 1
+            
+        return [lo, hi]
