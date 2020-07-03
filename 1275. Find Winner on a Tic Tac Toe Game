@@ -1,0 +1,26 @@
+class Solution:
+    def tictactoe(self, moves: List[List[int]]) -> str:
+        board = [['' for x in range(3)] for y in range(3)]
+        for index, move in enumerate(moves):
+            i, j = move
+            if index % 2 == 0:
+                board[i][j] = 'A'
+            else:
+                board[i][j] = 'B'
+                
+        winning_lines = [[[0,0],[0,1],[0,2]],
+                         [[1,0],[1,1],[1,2]],
+                         [[2,0],[2,1],[2,2]],
+                         [[0,0],[1,0],[2,0]],
+                         [[0,1],[1,1],[2,1]],
+                         [[0,2],[1,2],[2,2]],
+                         [[0,0],[1,1],[2,2]],
+                         [[0,2],[1,1],[2,0]]]
+        
+        def checkWinner(s): 
+            return any(all(board[i][j] == s for i,j in line) for line in winning_lines)
+    
+        if checkWinner('A'): return "A"
+        elif checkWinner('B'): return "B"
+        elif len(moves) == 9: return "Draw"
+        return "Pending"
