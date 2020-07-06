@@ -1,0 +1,12 @@
+class Solution:
+    def replaceElements(self, arr: List[int]) -> List[int]:
+        arr = arr[::-1]
+        prev = -1
+        for i in range(len(arr)):
+            cur = arr[i]
+            arr[i] = prev 
+            if cur > prev:
+                prev = cur
+            else:
+                pass
+        return arr[::-1]
