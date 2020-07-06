@@ -1,0 +1,15 @@
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        temp=set()
+        temp.add(n)
+        while n!=1:
+            sumi=0
+            while n>0:
+                num=n%10
+                n=n//10
+                sumi+=num**2
+            if sumi in temp:
+                return False
+            temp.add(sumi)
+            n=sumi
+        return True
