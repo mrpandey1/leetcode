@@ -1,0 +1,4 @@
+class Solution:
+    def sortByBits(self, x: List[int]) -> List[int]:
+        return sorted(sorted(x),key=lambda x:bin(x).count("1"))
+        
