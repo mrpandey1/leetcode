@@ -16,10 +16,6 @@ class Solution:
                 num+=dayofmonth[i]
             num += day - 1;
             return num
-        year1=int(date1[0:4])
-        mon1=int(date1[5:7])
-        date1=int(date1[8:])
-        year2=int(date2[0:4])
-        mon2=int(date2[5:7])
-        date2=int(date2[8:])
-        return abs(days(year1,mon1,date1)-days(year2,mon2,date2))
+        y1,m1,d1 = [int(i) for i in date1.split('-')]  
+        y2,m2,d2 = [int(i) for i in date2.split('-')]  
+        return abs(days(y1,m1,d1)-days(y2,m2,d2))
