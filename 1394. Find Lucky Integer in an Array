@@ -1,0 +1,16 @@
+class Solution:
+    def findLucky(self, arr: List[int]) -> int:
+        ans=[]
+        temp={}
+        for i in arr:
+            if i in temp:
+                temp[i]+=1
+            else:
+                temp[i]=1
+        for i,j in temp.items():
+            if i==j:
+                ans.append(i)
+        try:
+            return max(ans)        
+        except:
+            return -1
