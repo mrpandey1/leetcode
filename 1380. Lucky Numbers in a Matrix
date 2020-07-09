@@ -1,0 +1,16 @@
+class Solution:
+    def luckyNumbers (self, matrix: List[List[int]]) -> List[int]:
+        temp=[i for i in zip(*matrix)]
+        def checkRow(a,b):
+            return min(a)==b
+        def checkCol(a,b):
+            return max(a)==b
+        ans=[]
+        for i in matrix:
+            k=0
+            for j in i :
+                if checkRow(i,j) and checkCol(temp[k],j):
+                    ans.append(j)
+                    break
+                k+=1
+        return ans
