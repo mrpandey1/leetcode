@@ -1,0 +1,18 @@
+class Solution:
+    def canBeEqual(self, target: List[int], arr: List[int]) -> bool:
+        dict_ = {}
+        for i in target:
+            if i in dict_:
+                dict_[i] +=1
+            else:
+                dict_[i] = 1
+                
+                
+        for j in arr:
+            if j in dict_ and dict_[j] > 0:
+                dict_[j] -=1
+            else:
+                return False
+        
+        return True
+        # return sorted(target)==sorted(arr)
