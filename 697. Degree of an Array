@@ -1,0 +1,14 @@
+class Solution:
+    def findShortestSubArray(self, nums: List[int]) -> int:
+        if len(nums) == len(set(nums)): 
+            return 1
+        count = Counter(nums)
+        degree = max(count.values())
+        temp = []
+        l = []
+        for key, value in count.items():
+            if value == degree:
+                temp.append(key)
+        for i in temp: 
+            l.append(len(nums) - nums[::-1].index(i) -nums.index(i))
+        return min(l)
