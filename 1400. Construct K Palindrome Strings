@@ -1,15 +1,10 @@
 class Solution:
-    def canConstruct(self, s: str, k: int) -> bool:
-        if len(s) < k:
+    def canConstruct(self, s: str, k: int) -> bool:        
+        if k>len(s):
             return False
-        temp = {}
-        for char in s:
-            if char not in temp:
-                temp[char] = 1
-            else:
-                temp[char] += 1
-        oddCount = 0
-        for val in temp.values():
-            if val % 2 != 0:
-                oddCount += 1
-        return oddCount <= k
+        dc=collections.Counter(s)
+        cnt=0
+        for key,v in dc.items():
+            if  v&1:
+                cnt+=1
+        return cnt <= k
