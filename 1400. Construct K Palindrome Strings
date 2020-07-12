@@ -1,0 +1,15 @@
+class Solution:
+    def canConstruct(self, s: str, k: int) -> bool:
+        if len(s) < k:
+            return False
+        temp = {}
+        for char in s:
+            if char not in temp:
+                temp[char] = 1
+            else:
+                temp[char] += 1
+        oddCount = 0
+        for val in temp.values():
+            if val % 2 != 0:
+                oddCount += 1
+        return oddCount <= k
