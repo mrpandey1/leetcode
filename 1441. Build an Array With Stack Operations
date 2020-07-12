@@ -1,0 +1,18 @@
+class Solution:
+    def buildArray(self, target: List[int], n: int) -> List[str]:
+        res = []
+        tc = []
+        l = list(range(1,n+1))
+        
+        for v in l:
+            if v in target:
+                res.append("Push")
+                tc.append(v)
+            else:
+                res.append("Push")
+                res.append("Pop")
+            if target == tc:
+                break
+        
+        return res
+        
