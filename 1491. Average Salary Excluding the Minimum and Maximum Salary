@@ -1,0 +1,14 @@
+class Solution:
+    def average(self, salary: List[int]) -> float:
+        big=0
+        summ=0
+        small=salary[0]
+        l=0
+        for i in salary:
+            summ+=i
+            if i<small:
+                small=i
+            if i>big:
+                big=i
+            l+=1
+        return (summ-small-big)/(l-2)
