@@ -1,0 +1,5 @@
+class Solution:
+    def distanceBetweenBusStops(self, distance: List[int], start: int, destination: int) -> int:
+        s = sum(distance)
+        tmp = sum(distance[min(start, destination): max(destination, start)])
+        return min(tmp, s-tmp)
