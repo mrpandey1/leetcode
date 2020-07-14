@@ -1,0 +1,8 @@
+class Solution:
+    def numIdenticalPairs(self, nums: List[int]) -> int:
+        cnt = 0
+        d = collections.Counter(nums)
+        for k in d.keys():
+            if d[k] > 1:
+                cnt += math.comb(d[k], 2)
+        return cnt
