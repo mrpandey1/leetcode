@@ -1,0 +1,38 @@
+class Solution:
+    def solveSudoku(self, board: List[List[str]]) -> None:
+        """
+        Do not return anything, modify board in-place instead.
+        """
+        def can_add_this(i,j,num):
+            if any(num==n for n in board[i]):
+                return False
+            if any(num==n for n in list(zip(*board))[j]):
+                return False
+            m,n=(i//3)*3,(j//3)*3
+            for r in range(m,m+3):
+                for k in range(n,n+3):
+                    if num==board[r][k]:
+                        return False
+            return True
+    
+        def find_empty():
+            for j in range(9):
+                for k in range(9):
+                    if board[j][k]=='.':
+                        return j,k
+            return -1,-1
+        def solver():
+            a,b=find_empty()
+            if a==-1 and b==-1:
+                return True
+            for i in [str(n) for n in range(1,10)]:
+                if can_add_this(a,b,i):
+                    board[a][b]=i
+                    if solver():
+                        return True
+                    board[a][b] = '.'
+            return False
+        
+        if not board:
+            return
+        solver()
