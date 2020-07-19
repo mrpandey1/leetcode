@@ -1,0 +1,24 @@
+class Solution:
+    def totalNQueens(self, n: int) -> int:
+        ans=[]
+        pos=[]
+        self.dfs(n,pos,ans)
+        return len(ans)
+    def dfs(self,n,pos,ans):
+        if n==len(pos):
+            ans.append(0)
+        col=len(pos)
+        for row in range(n):
+            if not self.ValidPos(n,row,pos):
+                continue
+            pos.append(row)
+            self.dfs(n,pos,ans)
+            pos.remove(row)
+    def ValidPos(self, n,row,pos):
+        if row in pos:
+            return False        
+        x = len(pos)
+        for i in range(x):
+            if abs(row - pos[i]) == (x - i):
+                return False        
+        return True
