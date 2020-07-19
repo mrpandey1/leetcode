@@ -1,0 +1,34 @@
+class Solution:
+    def solveNQueens(self, n: int) -> List[List[str]]:
+        rst=[]
+        pos=[]
+        self.dfs(n,pos,rst)
+        return rst
+    def dfs(self,n,pos,rst):
+        if n==len(pos):
+            rst.append(self.posToMatrix(pos))
+        col=len(pos)
+        for row in range(n):
+            if not self.ValidPos(n,row,pos):
+                continue
+            pos.append(row)
+            self.dfs(n,pos,rst)
+            pos.remove(row)
+            
+    def ValidPos(self, n,row,pos):
+        if row in pos:
+            return False        
+        x = len(pos)
+        for i in range(x):
+            if abs(row - pos[i]) == (x - i):
+                return False        
+        return True
+    def posToMatrix(self, pos):
+        n = len(pos)
+        rst = []
+        for i in range(n):
+            p = ''
+            for j in range(n):
+                p += 'Q' if j == pos[i] else '.'
+            rst.append(p)
+        return rst
