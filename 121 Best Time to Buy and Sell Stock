@@ -1,14 +1,10 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        if prices==[]:
+        if len(prices)==0:
             return 0
-        buy=prices[0]
-        maxi=0
-        for i in range(len(prices)):
-            if prices[i]>buy and prices[i]-buy>maxi:
-                maxi=prices[i]-buy
-            elif prices[i]<buy:
-                buy=prices[i]
-                #maxi=buy
-            print(prices[i],buy,maxi)
-        return maxi
+        globalMax = 0
+        globalMin = prices[0]
+        for i in range(1,len(prices)):
+            globalMin=min(globalMin,prices[i])
+            globalMax=max(globalMax,prices[i]-globalMin)
+        return globalMax
