@@ -1,0 +1,10 @@
+class Solution:
+    def minimumTotal(self, triangle: List[List[int]]) -> int:
+        h = len(triangle)       
+        if h == 1:
+            return triangle[0][0]
+        cost = triangle[-1] 
+        for i in range(h-2,-1,-1):
+            for j in range(i+1):
+                cost[j]=triangle[i][j]+min(cost[j],cost[j+1])
+        return cost[0]
