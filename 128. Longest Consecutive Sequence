@@ -1,0 +1,18 @@
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        def dfs(n, i):
+            if n not in dic or dic[n]:
+                return 0
+            dic[n] = True
+            s = dfs(n+1, i+1) + dfs(n-1, i+1) + 1
+            return s
+            
+        dic = {}
+        for n in nums:
+            dic[n] = False
+        
+        maxx = 0
+        for n in nums:
+            if not dic[n]:
+                maxx = max(dfs(n, 1), maxx)
+        return maxx
