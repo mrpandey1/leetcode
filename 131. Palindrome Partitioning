@@ -1,0 +1,19 @@
+class Solution:
+    def isPalindrome(self,s):
+        return s==s[::-1]
+    
+    def partitionUtil(self,ind,s,stack,res):
+        if ind >= len(s):
+            res.append(list(stack))
+            return
+
+        for i in range(ind,len(s)):
+            if self.isPalindrome(s[ind:i+1]):
+                stack.append(s[ind:i+1])
+                self.partitionUtil(i+1,s,stack,res)
+                stack.pop()
+    def partition(self, s: str) -> List[List[str]]:
+        res = []
+        stack = []
+        self.partitionUtil(0,s,stack,res)
+        return res
