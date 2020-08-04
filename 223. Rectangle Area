@@ -1,0 +1,13 @@
+class Solution:
+    def computeArea(self, A: int, B: int, C: int, D: int, E: int, F: int, G: int, H: int) -> int:
+        R1=abs((C-A))*abs((B-D))
+        R2=abs((G-E))*abs((H-F))
+
+        if B>H or F>D or E>C or A>G:
+            return R1+R2
+        m=max(A,E)
+        n=max(B,F)
+        q=min(C,G)
+        r=min(D,H)
+        areaOverlap=abs((m-q))*abs((r-n))
+        return R1+R2-areaOverlap
