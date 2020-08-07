@@ -1,0 +1,18 @@
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
+        ans=[]
+        flag=True
+        for i in range(len(nums)-k+1):
+            if flag:
+                temp=nums[i:i+k]
+                ans.append(max(temp))
+                if temp[0]!=ans[-1]:
+                    flag=False
+            else:
+                ans.append(max(ans[-1],nums[i+k-1]))
+                if nums[i]==ans[-1]:
+                    flag=True
+        return ans
+        
+        
+        
