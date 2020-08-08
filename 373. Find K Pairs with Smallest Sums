@@ -1,0 +1,7 @@
+class Solution:
+    def kSmallestPairs(self, nums1: List[int], nums2: List[int], k: int) -> List[List[int]]:
+        temp=[]
+        for i in nums1:
+            for j in nums2:
+                temp.append([i,j])
+        return [_ for _ in sorted(temp,key=sum)][:k]
