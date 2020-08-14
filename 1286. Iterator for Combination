@@ -1,0 +1,13 @@
+class CombinationIterator:
+
+    def __init__(self, characters: str, combinationLength: int):
+	    self.dq = deque(combinations(characters, combinationLength))  
+
+    def next(self) -> str:
+	    return ''.join(self.dq.popleft())
+        
+
+    def hasNext(self) -> bool: 
+	    return len(self.dq)>0
+        
+
