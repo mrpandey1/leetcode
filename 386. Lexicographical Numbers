@@ -1,0 +1,13 @@
+class Solution:
+    def lexicalOrder(self, n: int) -> List[int]:
+        ans=[]
+        self.dfs(ans,n,1)
+        return ans
+    def dfs(self,ans,n,curr):
+        if curr>n:
+            return
+        ans.append(curr)
+        self.dfs(ans,n,curr*10)
+        if (curr % 10) < 9:
+            self.dfs(ans, n, curr + 1)
+        
