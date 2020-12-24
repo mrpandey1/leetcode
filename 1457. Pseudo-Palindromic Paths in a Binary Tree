@@ -1,0 +1,32 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def pseudoPalindromicPaths (self, root: TreeNode) -> int:
+        def makeList(tree):
+            paths = []
+            if not (tree.left or tree.right):
+                return [[tree.val]]
+            if tree.left:
+                paths.extend([[tree.val] + child for child in makeList(tree.left)])
+            if tree.right:
+                paths.extend([[tree.val] + child for child in makeList(tree.right)])
+            return paths
+        paths=makeList(root)
+        def ispspal(path):
+            c = collections.Counter(path)
+            for k in list(c.keys()):
+                if c[k] % 2 == 0:
+                    c.pop(k)
+
+            if len(c.keys()) <= 1:
+                return 1
+
+            return 0
+        ans=0
+        for i in paths:
+            ans+=ispspal(i)                
+        return ans
