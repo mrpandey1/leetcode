@@ -1,0 +1,13 @@
+class Solution:
+    def findOcurrences(self, text: str, first: str, second: str) -> List[str]:
+        ans=[]
+        text=text.split()
+        i=0
+        while i<len(text):
+            try:
+                if text[i]==first and text[i+1]==second:
+                    ans.append(text[i+2])
+                i+=1
+            except:
+                return ans
+        return ans
