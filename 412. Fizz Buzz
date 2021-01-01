@@ -1,0 +1,13 @@
+class Solution:
+    def fizzBuzz(self, n: int) -> List[str]:
+        ans=[]
+        dic={3:'Fizz',5:'Buzz'}
+        for i in range(1,n+1):
+            ans_str = ""
+            for key in dic.keys():
+                if i%key==0:
+                    ans_str+=dic[key]
+            if not ans_str:
+                ans_str=str(i)
+            ans.append(ans_str)
+        return ans
