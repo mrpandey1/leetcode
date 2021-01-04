@@ -1,0 +1,11 @@
+class Solution:
+    def findComplement(self, num: int) -> int:
+        inbin=bin(num)
+        inbin=inbin[2:]
+        compl=''
+        for bit in inbin:
+            if bit=='0':
+                compl=compl+'1'
+            if bit=='1':
+                compl=compl+'0'
+        return int(compl, 2)
