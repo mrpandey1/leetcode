@@ -1,0 +1,14 @@
+class Solution:
+    def licenseKeyFormatting(self, S: str, K: int) -> str:
+        ans=''
+        count=0
+        for i in S[::-1]:
+            if i!='-':
+                ans=i.upper()+ans
+                count+=1
+                if count==K:
+                    ans='-'+ans
+                    count=0
+        if ans and ans[0]=='-':
+            return ans[1:]
+        return ans
