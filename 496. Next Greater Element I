@@ -1,0 +1,17 @@
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        ans=[]
+        for i in nums1:
+            found=False
+            try:
+                temp=nums2.index(i)
+                for j in nums2[temp:]:
+                    if j>i:
+                        found=True
+                        ans.append(j)
+                        break
+                if found==False:
+                    ans.append(-1)
+            except:
+                ans.append(-1)
+        return ans
