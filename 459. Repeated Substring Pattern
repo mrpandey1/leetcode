@@ -1,0 +1,9 @@
+class Solution:
+    def repeatedSubstringPattern(self, s: str) -> bool:
+        temp=''
+        leng=len(s)
+        for i,j in enumerate(s[0:leng//2]):
+            temp+=j
+            if temp*(leng//(i+1))==s:
+                return True
+        return False
