@@ -1,0 +1,8 @@
+class Solution:
+    def readBinaryWatch(self, num: int) -> List[str]:
+        ans=[]
+        for i in range(12):
+            for j in range(60):
+                if (bin(i)+bin(j)).count('1')==num:
+                    ans.append(f'{i}:{j:02}')
+        return ans
