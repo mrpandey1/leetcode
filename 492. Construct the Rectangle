@@ -1,0 +1,14 @@
+class Solution:
+    def constructRectangle(self, area: int) -> List[int]:
+        i=0
+        j=area
+        ans=[]
+        diff=999999999
+        while i<=j:
+            if i*j==area:
+                if j-i<diff:
+                    diff=j-i
+                    ans=[j,i]
+            i+=1
+            j=area//i
+        return ans
