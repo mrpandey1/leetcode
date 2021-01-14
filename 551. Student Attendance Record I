@@ -1,0 +1,15 @@
+class Solution:
+    def checkRecord(self, s: str) -> bool:
+        total_a=0
+        if s.count('A')>1:
+            return False
+        total_l=0
+        for i in range(len(s)):
+            if s[i]=='L':
+                total_l+=1
+            else:
+                total_l=0
+            if total_l>2:
+                return False
+        return True
+            
