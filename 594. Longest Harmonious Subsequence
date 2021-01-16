@@ -1,0 +1,15 @@
+from collections import defaultdict
+class Solution:
+    def findLHS(self, nums: List[int]) -> int:
+        temp={}
+        ans=0
+        for i in nums:
+            if i in temp:
+                temp[i]+=1
+            else:
+                temp[i]=1
+            if temp.get(i+1):
+                ans=max(ans,temp[i]+temp[i+1])
+            if temp.get(i-1):
+                ans=max(ans,temp[i]+temp[i-1])
+        return ans
