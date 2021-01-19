@@ -1,0 +1,29 @@
+class Solution:
+    def solve(self, board: List[List[str]]) -> None:
+        """
+        Do not return anything, modify board in-place instead.
+        """
+        def helper(board,row,col):
+            if row < 0 or row >= len(board) or col < 0 or col >= len(board[0]) or board[row][col] != 'O':
+                return
+
+            board[row][col] = "*" #special char to store cell not captured
+
+            helper(board,row+1,col) #down
+            helper(board,row-1,col) #up
+            helper(board,row,col-1) #left
+            helper(board,row,col+1) 
+        if not board:
+            return 
+        m=len(board)
+        n=len(board[0])
+        for i in range(m):
+            for j in range(n):
+                if i==0 or i==m-1 or j==0 or j==n-1:
+                    helper(board,i,j)
+        for i in range(m):
+            for j in range(n):
+                if board[i][j] == 'O': #captured so set it to X
+                    board[i][j] = 'X'
+                elif board[i][j] == '*': #not captured so set it back to O
+                    board[i][j] = 'O'
