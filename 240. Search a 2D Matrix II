@@ -1,0 +1,19 @@
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        def binarySearch (arr, l, r, x):
+            if arr[0]>target or arr[-1]<target:
+                return False
+            if r >= l: 
+                mid = l + (r - l) // 2
+                if arr[mid] == x: 
+                    return True 
+                elif arr[mid] > x: 
+                    return binarySearch(arr, l, mid-1, x) 
+                else: 
+                    return binarySearch(arr, mid + 1, r, x) 
+            else: 
+                return False
+        for i in matrix:
+            if binarySearch(i,0,len(i),target):
+                return True
+        return False
