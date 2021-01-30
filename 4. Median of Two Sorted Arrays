@@ -1,39 +1,40 @@
-import statistics as st
 class Solution:
-    def merge(self,a,b):
-        i,j,k=0,0,0
-        new=[0]*(len(a)+len(b))
-        while i<len(a) and j !=len(b):
-            if a[i]<b[j]:
-                new[k]=a[i]
-                i+=1
+    def findMedianSortedArrays(self, a: List[int], b: List[int]) -> float:
+       
+        def getMax(nums,partition):
+            if partition==0:
+                return float('-inf')
             else:
-                new[k]=b[j]
-                j+=1
-            k+=1
-        while i<len(a):
-            new[k]=a[i]
-            i+=1
-            k+=1
-        while j<len(b):
-            new[k]=b[j]
-            j+=1
-            k+=1
-        return new
-    def get_median(self,a,b):
-        l=self.merge(a,b)
-        d=len(l)
-        middle=int(d/2)
-        if d % 2 == 0:
-            return sum(l[middle - 1:middle + 1]) / 2
-        else :
-            return l[middle]    
-    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
-        if not nums1:
-            return self.get_median([],nums2)
-        elif not nums2:
-            return self.get_median(nums1,[])
-        #merge(nums1,nums2)
-        return float(self.get_median(nums1,nums2))
-
+                return nums[partition-1]
+        def getMin(nums,partition):
+            if partition==len(nums):
+                return float('inf')
+            else:
+                return nums[partition]
+    
+        if len(a)>len(b):
+            a,b=b,a
+        lo=0
+        hi=len(a)
+        combinedLength=len(a)+len(b)
+        while lo<=hi:
+            partX=int((lo+hi)/2)
+            partY=int((combinedLength+1)/2-partX)
+            
+            leftX=getMax(a,partX)
+            rightX=getMin(a,partX)
+            
+            leftY=getMax(b,partY)
+            rightY=getMin(b,partY)
+            
+            if leftX<=rightY and leftY<=rightX:
+                if combinedLength%2==0:
+                    return (max(leftX,leftY)+min(rightX,rightY))/2.0
+                else:
+                    return max(leftY,leftX)
+            
+            if leftX>rightY:
+                hi=partX-1
+            else:
+                lo=partX+1
         
