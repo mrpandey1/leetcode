@@ -1,35 +1,29 @@
 class Solution:
-    def longestCommonPrefix(self, a: List[str]) -> str:
-        '''
-        temp=sorted(a,key=len)
-        res=''
-        ans=''
-        flag=True
-        if (len(temp)==0): 
-            return "" 
-        if (len(temp)==1): 
-            return a[0]
-        for i in temp[0]:
-            res+=i
-            for j in a:
-                if j.startswith(res):
-                    ans=res
-                else:
-                    flag=False
-            if flag==False:
-                return res[0:-1]
-        '''
-        length=len(a)  
-        a.sort()  
-        if (length==0): 
-            return "" 
-        if (length==1): 
-            return a[0]
-        smallest=min(len(a[0]),len(a[length-1]))
-        print(smallest)
-        i = 0
-        while i <smallest and a[0][i]==a[length-1][i]:
-            i+=1
-        ans=a[0][0:i] 
-        return ans
-        
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        if len(strs)==0:
+            return ""
+        if strs[0]=='':
+            return ''
+        if len(strs)==1:
+            return strs[0]
+        if len(strs[0])<len(strs[1]):
+            strs[0],strs[1]=strs[1],strs[0]
+        first=''
+        for i,j in enumerate(strs[1]):
+            if strs[0][i]!=j:
+                break;
+            else:
+                first+=j
+        if first=='':
+            return ''
+        for i in strs[2:]:
+            temp=first
+            while temp!='':
+                if i.startswith(temp):
+                    first=temp
+                    break
+                temp=temp[0:-1]
+            first=temp
+            if first=='':
+                return ''
+        return first
